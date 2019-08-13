@@ -1,0 +1,49 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+	xmlns:app="http://schemas.android.com/apk/res-auto">
+	<data>
+		<variable
+			name="vm"
+			type="com.example.navigation.search.SearchViewModel" />
+	</data>
+<androidx.constraintlayout.widget.ConstraintLayout
+	android:layout_width="match_parent"
+	android:layout_height="match_parent">
+	
+	<SearchView
+		android:layout_width="0dp"
+		android:layout_height="?actionBarSize"
+		android:layout_marginStart="@dimen/activity_horizontal_margin"
+		android:layout_marginTop="@dimen/activity_vertical_margin"
+		android:layout_marginEnd="@dimen/activity_horizontal_margin"
+		android:background="@drawable/search_background"
+		android:paddingEnd="@dimen/spacing_middle"
+		android:paddingStart="@dimen/spacing_middle"
+		app:layout_constraintEnd_toEndOf="parent"
+		app:layout_constraintStart_toStartOf="parent"
+		android:queryBackground="@null"
+		app:layout_constraintTop_toTopOf="parent"
+		android:id="@+id/searchBox"
+		android:iconifiedByDefault="false"
+		style="?editTextStyle"
+		android:hint="@string/search_for_movies_tv_person"
+		android:onQueryTextChange="@{vm.onQueryTextChange}"
+		android:onQueryTextSubmit="@{vm.onQueryTextSubmit}"
+		android:queryHint="@string/search_for_movies_tv_person"
+		android:drawableEnd="@android:drawable/ic_menu_search"/>
+
+	<androidx.recyclerview.widget.RecyclerView
+		android:layout_width="0dp"
+		android:layout_height="0dp"
+		app:layout_constraintTop_toBottomOf="@id/searchBox"
+		app:layout_constraintBottom_toBottomOf="parent"
+		app:layout_constraintStart_toStartOf="parent"
+		app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
+		android:adapter="@{vm.adapter}"
+		app:layout_constraintEnd_toEndOf="parent"
+		android:id="@+id/searchRecycler"
+		android:layout_margin="@dimen/activity_vertical_margin"
+		/>
+	
+</androidx.constraintlayout.widget.ConstraintLayout>
+</layout>

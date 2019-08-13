@@ -1,0 +1,112 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+	xmlns:app="http://schemas.android.com/apk/res-auto">
+	
+	<data>
+		
+		<variable
+			name="vm"
+			type="com.example.navigation.search.SearchViewModel" />
+		
+		<variable
+			name="searchItem"
+			type="com.example.navigation.search.SearchAdapter.SearchItem" />
+		
+		<variable
+			name="position"
+			type="Integer" />
+	</data>
+	
+	<FrameLayout
+		android:layout_width="match_parent"
+		android:layout_height="wrap_content"
+		android:layout_margin="@dimen/spacing_medium"
+		android:onClick="@{()->vm.onItemClick(position)}"
+		android:orientation="vertical">
+		
+		<androidx.constraintlayout.widget.ConstraintLayout
+			android:layout_width="match_parent"
+			android:layout_height="wrap_content">
+			
+			<com.google.android.material.card.MaterialCardView
+				android:id="@+id/materialCardView"
+				android:layout_width="72dp"
+				android:layout_height="96dp"
+				android:layout_margin="8dp"
+				android:layout_marginStart="8dp"
+				style="?myCardViewStyle"
+				android:layout_marginTop="8dp"
+				android:layout_marginBottom="8dp"
+				app:cardCornerRadius="8dp"
+				app:cardElevation="4dp"
+				app:layout_constraintBottom_toBottomOf="parent"
+				app:layout_constraintEnd_toStartOf="@id/title"
+				app:layout_constraintStart_toStartOf="parent"
+				app:layout_constraintTop_toTopOf="@+id/rating_bar">
+				
+				<ImageView
+					android:id="@+id/image_view"
+					android:layout_width="match_parent"
+					android:layout_height="match_parent"
+					android:scaleType="centerCrop"
+					app:glideSrc="@{searchItem.posterPath}" />
+			
+			</com.google.android.material.card.MaterialCardView>
+			
+			<TextView
+				android:id="@+id/title"
+				android:layout_width="wrap_content"
+				app:layout_constraintHorizontal_bias="0"
+				android:layout_height="wrap_content"
+				android:text="@{searchItem.title}"
+				app:layout_constraintEnd_toStartOf="@id/barrier"
+				app:layout_constraintStart_toEndOf="@+id/materialCardView"
+				app:layout_constraintTop_toTopOf="@+id/materialCardView" />
+			
+			<TextView
+				android:id="@+id/media_type"
+				android:layout_width="wrap_content"
+				android:layout_height="wrap_content"
+				android:layout_marginTop="8dp"
+				android:layout_marginEnd="8dp"
+				android:layout_marginBottom="8dp"
+				app:layout_constraintHorizontal_bias="1"
+				android:gravity="end"
+				android:text="@{searchItem.type}"
+				app:layout_constraintBottom_toBottomOf="parent"
+				app:layout_constraintEnd_toEndOf="parent"
+				app:layout_constraintTop_toTopOf="parent" />
+			
+			<TextView
+				android:id="@+id/release_date"
+				android:layout_width="wrap_content"
+				android:layout_height="wrap_content"
+				app:layout_constraintHorizontal_bias="0"
+				android:text="@{searchItem.releaseData}"
+				app:layout_constraintEnd_toEndOf="@id/barrier"
+				app:layout_constraintStart_toStartOf="@id/title"
+				app:layout_constraintTop_toBottomOf="@id/title" />
+			
+			<RatingBar
+				android:id="@+id/rating_bar"
+				style="@style/Widget.AppCompat.RatingBar.Small"
+				android:layout_width="wrap_content"
+				android:layout_height="wrap_content"
+				app:layout_constraintHorizontal_bias="0"
+				android:numStars="5"
+				android:rating="@{searchItem.ratings}"
+				app:layout_constraintBottom_toBottomOf="@id/materialCardView"
+				app:layout_constraintEnd_toEndOf="@id/barrier"
+				app:layout_constraintStart_toStartOf="@id/title"
+				app:layout_constraintTop_toBottomOf="@id/release_date" />
+			
+			<androidx.constraintlayout.widget.Barrier
+				android:id="@+id/barrier"
+				android:layout_width="wrap_content"
+				android:layout_height="wrap_content"
+				app:barrierDirection="right"
+				app:constraint_referenced_ids="title,release_date,rating_bar" />
+		
+		</androidx.constraintlayout.widget.ConstraintLayout>
+	</FrameLayout>
+</layout>

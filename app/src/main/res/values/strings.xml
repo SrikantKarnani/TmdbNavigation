@@ -1,0 +1,4 @@
+<resources>
+    <string name="app_name">Navigation</string>
+	<string name="search_for_movies_tv_person">Search for Movies, Tv, Person</string>
+</resources>

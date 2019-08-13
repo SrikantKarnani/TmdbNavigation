@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+	xmlns:app="http://schemas.android.com/apk/res-auto">
+	
+	<data>
+		<variable
+			name="viewModel"
+			type="com.example.navigation.moviedetail.MovieDetailViewModel" />
+		
+		<variable
+			name="position"
+			type="Integer" />
+	</data>
+	
+	<com.google.android.material.card.MaterialCardView
+		android:layout_width="96dp"
+		android:layout_height="120dp"
+		style="?myCardViewStyle"
+		android:layout_marginEnd="8dp"
+		app:cardCornerRadius="8dp"
+		android:onClick="@{()->viewModel.onItemClick(position)}"
+		app:cardElevation="4dp">
+		
+		<ImageView
+			android:id="@+id/image_view"
+			android:scaleType="centerCrop"
+			android:layout_width="match_parent"
+			app:glideSrc="@{viewModel.imagesList[position]}"
+			android:layout_height="match_parent" />
+	
+	</com.google.android.material.card.MaterialCardView>
+</layout>

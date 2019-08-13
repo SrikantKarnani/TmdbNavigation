@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+	
+	<style name="BaseTheme" parent="Theme.MaterialComponents.Light.NoActionBar">
+		<!-- Customize your theme here. -->
+		<item name="colorPrimary">@color/colorPrimary</item>
+		<item name="colorPrimaryDark">@color/grey_3</item>
+		<item name="colorAccent">@color/colorAccent</item>
+		<item name="android:windowLightStatusBar">true</item>
+		<item name="android:fontFamily">@font/flaticon</item>
+		<item name="bottomNavStyle">@style/BottomNavStyleLight</item>
+		<item name="editTextStyle">@style/EditText.Grey</item>
+		<item name="windowActionModeOverlay">true</item>
+		<item name="android:windowDrawsSystemBarBackgrounds">true</item>
+		<item name="android:dialogTheme">@style/Dialog.Theme</item>
+		
+		<!--<item name="cardViewStyle">@style/CardView.Light</item>-->
+	</style>
+	
+	<style name="BaseThemeDark" parent="Theme.MaterialComponents.DayNight.NoActionBar">
+		<!-- Customize your theme here. -->
+		<item name="colorPrimary">@color/blue_grey_500</item>
+		<item name="colorPrimaryDark">@color/blue_grey_900</item>
+		<item name="android:windowBackground">@color/blue_grey_1000</item>
+		<item name="bottomNavStyle">@style/BottomNavStyleDark</item>
+		<item name="android:windowLightStatusBar">false</item>
+		<item name="editTextStyle">@style/EditText.White</item>
+		<item name="android:fontFamily">@font/flaticon</item>
+		<item name="windowActionModeOverlay">true</item>
+		<item name="android:windowDrawsSystemBarBackgrounds">true</item>
+		<item name="android:dialogTheme">@style/Dialog.Theme</item>
+		
+		<!--<item name="android:textColor">@color/grey_3</item>-->
+		<!--<item name="android:textColorHint">@color/grey_3</item>-->
+		<!--<item name="android:actionModeBackground">@color/blue_grey_600</item>-->
+		<!--<item name="android:editTextColor">@color/grey_3</item>-->
+		<!--<item name="cardViewStyle">@style/CardView.Dark</item>-->
+	</style>
+</resources>

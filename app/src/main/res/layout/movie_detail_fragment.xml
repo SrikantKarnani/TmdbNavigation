@@ -1,0 +1,135 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+	xmlns:app="http://schemas.android.com/apk/res-auto"
+	xmlns:tools="http://schemas.android.com/tools">
+	
+	<data>
+		<variable
+			name="viewModel"
+			type="com.example.navigation.moviedetail.MovieDetailViewModel" />
+		
+		<variable
+			name="movie"
+			type="com.example.navigation.storage.db.models.Movie" />
+	</data>
+	
+	<ScrollView
+		android:layout_width="match_parent"
+		android:layout_height="match_parent"
+		tools:context=".moviedetail.MovieDetailFragment">
+		
+		<LinearLayout
+			android:layout_width="match_parent"
+			android:layout_height="wrap_content"
+			android:orientation="vertical">
+			
+			<com.google.android.material.card.MaterialCardView
+				android:id="@+id/card_view"
+				style="?myCardViewStyle"
+				android:layout_width="match_parent"
+				android:layout_height="480dp"
+				app:cardCornerRadius="16dp"
+				app:cardElevation="4dp">
+				
+				<androidx.constraintlayout.motion.widget.MotionLayout
+					android:layout_width="match_parent"
+					app:layoutDescription="@xml/detail_screen_scene"
+					android:layout_height="match_parent">
+					
+					<ImageView
+						android:id="@+id/movie_image"
+						android:layout_width="match_parent"
+						android:scaleType="fitXY"
+						tools:src="@drawable/response"
+						android:layout_height="match_parent"
+						app:glideSrcOriginal="@{viewModel.mainImagePath}" />
+					
+					<FrameLayout
+						android:layout_width="match_parent"
+						android:layout_height="match_parent"
+						android:background="@drawable/dark_bottom" />
+					
+					<androidx.recyclerview.widget.RecyclerView
+						android:id="@+id/images"
+						android:layout_width="wrap_content"
+						android:orientation="horizontal"
+						android:layout_height="wrap_content"
+						app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
+						android:adapter="@{viewModel.adapter}"
+						app:layout_constraintBottom_toBottomOf="parent"
+						app:layout_constraintEnd_toEndOf="parent"
+						app:layout_constraintStart_toStartOf="parent" />
+				</androidx.constraintlayout.motion.widget.MotionLayout>
+			</com.google.android.material.card.MaterialCardView>
+			
+			
+			<TextView
+				android:id="@+id/movie_title"
+				android:layout_width="wrap_content"
+				android:layout_height="wrap_content"
+				android:layout_marginStart="8dp"
+				android:text="@{movie.title}"
+				android:textSize="32sp"
+				android:paddingBottom="4dp"
+				android:textStyle="bold"
+				tools:text="Title" />
+			
+			<TextView
+				android:id="@+id/movie_genre"
+				android:layout_width="wrap_content"
+				android:layout_height="wrap_content"
+				android:layout_marginStart="16dp"
+				android:layout_marginTop="4dp"
+				android:elevation="5dp"
+				android:text="@{movie.genreList}"
+				android:textSize="16sp"
+				tools:text="Title" />
+			
+			<View
+				android:layout_width="match_parent"
+				android:layout_height="2dp"
+				android:layout_marginStart="8dp"
+				android:layout_marginTop="4dp"
+				android:layout_marginEnd="8dp"
+				android:layout_marginBottom="4dp"
+				android:background="@color/grey_20" />
+			
+			<TextView
+				android:layout_width="wrap_content"
+				android:layout_height="wrap_content"
+				android:layout_marginStart="16dp"
+				android:layout_marginTop="4dp"
+				android:text="Description"
+				android:textSize="16sp"
+				android:textStyle="bold" />
+			
+			<TextView
+				android:id="@+id/movie_description"
+				android:layout_width="match_parent"
+				android:layout_height="wrap_content"
+				android:layout_marginStart="16dp"
+				android:layout_marginTop="4dp"
+				android:text="@{movie.overview}"
+				android:textSize="14sp"
+				tools:text="Title" />
+			<TextView
+				android:layout_width="wrap_content"
+				android:layout_height="wrap_content"
+				android:layout_marginStart="16dp"
+				android:layout_marginTop="4dp"
+				android:text="Cast"
+				android:textSize="16sp"
+				android:textStyle="bold" />
+			<androidx.recyclerview.widget.RecyclerView
+				android:id="@+id/casts"
+				android:layout_width="wrap_content"
+				android:orientation="horizontal"
+				android:layout_height="wrap_content"
+				app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
+				android:adapter="@{viewModel.castAdapter}"
+				app:layout_constraintBottom_toBottomOf="parent"
+				app:layout_constraintEnd_toEndOf="parent"
+				app:layout_constraintStart_toStartOf="parent" />
+		</LinearLayout>
+	</ScrollView>
+</layout>
